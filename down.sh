@@ -1,7 +1,9 @@
 #! /bin/bash
 DEV=$1
-CACHE_NAMESERVER="/tmp/openvpn/$DEV.nameserver"
-echo $CACHE_NAMESERVER
+DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+source "$DIR/.env"
+
+CACHE_NAMESERVER="$TEMP_DIR/$DEV.nameserver"
 
 if [ -f $CACHE_NAMESERVER ]; then
 	for ns in `cat $CACHE_NAMESERVER`; do

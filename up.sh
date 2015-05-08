@@ -1,10 +1,12 @@
 #! /bin/bash
 DEV=$1
+DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+source "$DIR/.env"
 
-if [ ! -d /tmp/openvpn ]; then
-	mkdir /tmp/openvpn
+if [ ! -d $TEMP_DIR ]; then
+	mkdir $TEMP_DIR
 fi
-CACHE_NAMESERVER="/tmp/openvpn/$DEV.nameserver"
+CACHE_NAMESERVER="$TEMP_DIR/$DEV.nameserver"
 echo -n "" > $CACHE_NAMESERVER
 
 dns=dns
